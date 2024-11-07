@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="logo" routerLink="/">Social Media</div>
+
+  <div class="user-auth-container">
+    <!-- Show "Welcome, Firstname" and Dropdown for Logged-in Users -->
+    <div *ngIf="isLoggedIn" class="user-section">
+      <span (click)="toggleDropdown()" class="dropdown-toggle">
+        Welcome, {{ currentUser?.firstName }}
+      </span>
+      <div *ngIf="isDropdownOpen" class="dropdown-menu">
+        <a routerLink="/my-profile">My Profile</a>
+        <a (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+    <!-- Show Login Button for Non-Logged-in Users -->
+    <div *ngIf="!isLoggedIn" class="auth">
+      <a routerLink="/login">Login</a>
+    </div>
+  </div>
+</header>
